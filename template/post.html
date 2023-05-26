@@ -1,0 +1,38 @@
+{%extends 'base.html'%}
+
+{%block title%} Post | ShamBlog {%endblock%}
+
+{%block content%}
+
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10">
+            <h3>{{post.postName}}</h3>
+            <p style="font-weight: 900;">SPORTS: {{post.category.sportsName}}</p>
+            <img src="/media/{{post.image}}" alt="Post Image" class="responsive-img" width="1000px" height="500px">
+            <br>
+            <br>
+            <p>{{post.content | safe}}</p>
+        </div>
+        <div class="col s12 m2">
+            {%for category in categorys%}
+            <div class="card item">
+                <div class="img-container">
+                    <img src="/media/{{category.image}}" alt="Category Image" class="responsive-img" width="100px"
+                        height="300px" style="margin-left: 10px;">
+                </div>
+                <div class="card-content">
+                    <div class="card-title">
+                        <h5>{{category.sportsName}}</h5>
+                    </div>
+                    <p class="truncate">{{category.description}}</p>
+                    <div class="container center-align">
+                        <a href="/category/{{category.urls}}" class="btn bg-primary">SHOW</a>
+                    </div>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+</div>
+{%endblock%}
